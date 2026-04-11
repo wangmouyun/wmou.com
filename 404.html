@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 - 页面未找到</title>
+    <meta name="robots" content="noindex,follow">
+    <meta http-equiv="refresh" content="3;url=https://www.wangmou.com/">
+    <link rel="shortcut icon" href="https://jingtai.wangxiansheng.com/images/logo.svg" />
+    <style>
+        :root {
+            --primary: #163b7a;
+            --primary-deep: #0d1f45;
+            --accent: #d7b26d;
+            --text: #1f2a3d;
+            --muted: #667085;
+            --bg: #f6f8fc;
+            --white: #ffffff;
+            --shadow: 0 20px 50px rgba(13, 31, 69, .10);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(22, 59, 122, .08), transparent 30%),
+                radial-gradient(circle at top right, rgba(215, 178, 109, .14), transparent 24%),
+                linear-gradient(180deg, #f8faff 0%, #f3f6fb 100%);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .page-404 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .card-404 {
+            width: 100%;
+            max-width: 760px;
+            padding: 56px 48px;
+            text-align: center;
+            background: rgba(255,255,255,.92);
+            border: 1px solid rgba(255,255,255,.95);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+            border-radius: 999px;
+            background: rgba(22, 59, 122, .08);
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .code {
+            font-size: clamp(4.5rem, 12vw, 8rem);
+            line-height: 1;
+            font-weight: 800;
+            color: var(--primary-deep);
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0 0 14px;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--primary-deep);
+            font-weight: 800;
+        }
+
+        p {
+            margin: 0 auto;
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .actions {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main,
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all .25s ease;
+        }
+
+        .btn-main {
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary), #244d96);
+            box-shadow: 0 16px 40px rgba(22, 59, 122, .18);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            color: var(--primary-deep);
+            background: #fff;
+            border: 1px solid rgba(15, 23, 42, .08);
+        }
+
+        .btn-ghost:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .tips {
+            margin-top: 22px;
+            font-size: .92rem;
+            color: var(--muted);
+        }
+
+        .tips strong {
+            color: var(--primary);
+        }
+
+        @media (max-width: 767.98px) {
+            .card-404 {
+                padding: 40px 24px;
+                border-radius: var(--radius-md);
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn-main,
+            .btn-ghost {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page-404">
+        <section class="card-404">
+            <div class="brand">网谋（苏州）投资有限公司</div>
+            <div class="code">404</div>
+            <h1>抱歉，您访问的页面不存在</h1>
+            <p>
+                当前页面可能已被删除、名称已更改，或暂时不可用。系统将自动跳转至官方网站首页，您也可以点击下方按钮立即返回。
+            </p>
+            <div class="actions">
+                <a class="btn-main" href="https://www.wangmou.com/">返回官网首页</a>
+                <a class="btn-ghost" href="javascript:history.back();">返回上一页</a>
+            </div>
+            <div class="tips">将在 <strong id="countdown">3</strong> 秒后自动跳转至 www.wangmou.com</div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            var seconds = 3;
+            var countdown = document.getElementById('countdown');
+            var target = 'https://www.wangmou.com/';
+
+            var timer = setInterval(function () {
+                seconds -= 1;
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    window.location.href = target;
+                    return;
+                }
+                countdown.textContent = seconds;
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
