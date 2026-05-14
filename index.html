@@ -6,7 +6,7 @@
 
   <title>网谋</title>
   <meta name="description" content="昆山开发区网谋信息咨询服务部，专注企业网站建设、SEO优化、SEM推广、GEO生成式搜索优化及互联网营销咨询服务。" />
-  <meta name="keywords" content="网谋,Wmou,网站建设,企业官网建设,SEO优化,SEM推广,GEO优化,生成式搜索优化,互联网营销" />
+  <meta name="keywords" content="网谋,Wmou,网站建设,企业官网建设,SEO优化,SEM推广,GEO优化,生成式搜索优化,AI搜索优化,互联网营销" />
 
   <style>
     :root {
@@ -28,7 +28,11 @@
       --max: 1180px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -45,7 +49,15 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
       width: min(calc(100% - 48px), var(--max));
@@ -66,13 +78,15 @@
       gap: 16px;
     }
 
-    .topbar a { color: #fff; }
+    .topbar a {
+      color: #fff;
+    }
 
     .header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
@@ -86,10 +100,11 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
       flex-shrink: 0;
+      min-width: 0;
     }
 
     .brand__logo {
@@ -103,6 +118,11 @@
       font-weight: 900;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       box-shadow: 0 12px 28px rgba(20,93,99,.22);
+      flex-shrink: 0;
+    }
+
+    .brand__text {
+      min-width: 0;
     }
 
     .brand__text strong {
@@ -118,8 +138,11 @@
       margin-top: 3px;
       color: var(--muted);
       font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 280px;
     }
 
     .nav {
@@ -127,18 +150,23 @@
       align-items: center;
       justify-content: flex-end;
       flex-wrap: wrap;
-      gap: 10px clamp(14px, 2.4vw, 30px);
+      gap: 8px clamp(14px, 2.4vw, 28px);
       color: var(--text);
       font-size: 14px;
       white-space: nowrap;
+    }
+
+    .nav a {
+      transition: color .2s ease, background .2s ease, transform .2s ease;
     }
 
     .nav a:not(.nav__btn) {
       padding: 8px 0;
     }
 
-    .nav a { transition: color .2s ease; }
-    .nav a:hover { color: var(--primary); }
+    .nav a:hover {
+      color: var(--primary);
+    }
 
     .nav__btn {
       padding: 10px 18px;
@@ -149,9 +177,14 @@
       box-shadow: 0 10px 24px rgba(20,93,99,.16);
     }
 
+    .nav__btn:hover {
+      transform: translateY(-1px);
+      background: var(--primary-dark);
+    }
+
     .hero {
       position: relative;
-      padding: clamp(68px, 9vw, 118px) 0 clamp(58px, 8vw, 88px);
+      padding: clamp(62px, 8vw, 112px) 0 clamp(56px, 7vw, 86px);
       background:
         radial-gradient(circle at 86% 18%, rgba(43,169,155,.18), transparent 34%),
         linear-gradient(135deg, #f7fbfb 0%, #ffffff 48%, #eef8f7 100%);
@@ -184,7 +217,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
       gap: clamp(34px, 5vw, 68px);
       align-items: center;
     }
@@ -211,23 +244,26 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
+      flex-shrink: 0;
     }
 
     h1 {
-      max-width: 820px;
+      max-width: 860px;
       margin-bottom: 24px;
       color: var(--ink);
-      font-size: clamp(42px, 6.3vw, 76px);
+      font-size: clamp(38px, 5.8vw, 72px);
       line-height: 1.08;
       letter-spacing: -.055em;
       word-break: keep-all;
       overflow-wrap: anywhere;
     }
 
-    .hero__highlight { color: var(--primary); }
+    .hero__highlight {
+      color: var(--primary);
+    }
 
     .hero__lead {
-      max-width: 720px;
+      max-width: 740px;
       margin-bottom: 34px;
       color: var(--text);
       font-size: clamp(16px, 2vw, 19px);
@@ -248,15 +284,21 @@
       padding: 0 24px;
       border-radius: 999px;
       font-weight: 700;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
 
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn--primary {
       color: #fff;
       background: var(--primary);
       box-shadow: 0 16px 34px rgba(20,93,99,.20);
+    }
+
+    .btn--primary:hover {
+      background: var(--primary-dark);
     }
 
     .btn--secondary {
@@ -270,10 +312,11 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      max-width: 680px;
+      max-width: 720px;
     }
 
     .stat {
+      min-width: 0;
       padding: 16px 18px;
       border-radius: var(--radius-md);
       background: rgba(255,255,255,.78);
@@ -290,8 +333,10 @@
     }
 
     .stat span {
+      display: block;
       color: var(--muted);
       font-size: 13px;
+      line-height: 1.5;
     }
 
     .hero-card {
@@ -299,7 +344,7 @@
       min-width: 0;
       padding: clamp(26px, 3.5vw, 38px);
       border-radius: 32px;
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.9);
       border: 1px solid rgba(224,238,237,.9);
       box-shadow: var(--shadow);
       overflow: hidden;
@@ -362,6 +407,7 @@
       background: var(--accent-soft);
       font-style: normal;
       font-weight: 900;
+      flex-shrink: 0;
     }
 
     .service-point h3 {
@@ -374,12 +420,15 @@
     .service-point p {
       color: var(--muted);
       font-size: 14px;
+      line-height: 1.65;
     }
 
-    section { padding: clamp(58px, 8vw, 90px) 0; }
+    section {
+      padding: clamp(58px, 8vw, 90px) 0;
+    }
 
     .section-head {
-      max-width: 780px;
+      max-width: 800px;
       margin-bottom: 38px;
     }
 
@@ -446,7 +495,8 @@
       color: var(--primary);
       background: var(--primary-soft);
       font-weight: 900;
-      font-size: 16px;
+      font-size: 15px;
+      white-space: nowrap;
     }
 
     .service-card h3 {
@@ -484,7 +534,9 @@
       box-shadow: var(--shadow);
     }
 
-    .value-panel .kicker { color: #97e2d8; }
+    .value-panel .kicker {
+      color: #97e2d8;
+    }
 
     .value-panel h2 {
       margin-bottom: 16px;
@@ -492,9 +544,13 @@
       font-size: clamp(30px, 4vw, 46px);
       line-height: 1.18;
       letter-spacing: -.04em;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
 
-    .value-panel p { color: rgba(255,255,255,.82); }
+    .value-panel p {
+      color: rgba(255,255,255,.84);
+    }
 
     .advantage-list {
       display: grid;
@@ -503,6 +559,7 @@
     }
 
     .advantage {
+      min-width: 0;
       padding: 26px;
       border-radius: var(--radius-lg);
       background: #fff;
@@ -548,6 +605,7 @@
       color: #fff;
       background: var(--primary);
       font-weight: 900;
+      font-size: 14px;
     }
 
     .process-step h3 {
@@ -593,7 +651,9 @@
       letter-spacing: -.04em;
     }
 
-    .company-card p { color: var(--text); }
+    .company-card p {
+      color: var(--text);
+    }
 
     .company-badge {
       display: inline-flex;
@@ -618,14 +678,18 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .info-row:first-child { padding-top: 0; }
+    .info-row:first-child {
+      padding-top: 0;
+    }
 
     .info-row:last-child {
       padding-bottom: 0;
       border-bottom: none;
     }
 
-    .info-row span { color: var(--muted); }
+    .info-row span {
+      color: var(--muted);
+    }
 
     .info-row strong {
       color: var(--ink);
@@ -639,12 +703,16 @@
       font-weight: 700;
     }
 
-    .contact {
-      padding: clamp(34px, 4.8vw, 54px);
+    .contact-section {
+      background: #fff;
+    }
+
+    .contact-card {
+      padding: clamp(28px, 4.8vw, 54px);
       border-radius: 36px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 310px);
+      gap: 32px;
       align-items: center;
       color: #fff;
       background:
@@ -654,8 +722,9 @@
       overflow: hidden;
     }
 
-    .contact h2 {
-      margin-bottom: 12px;
+    .contact-card h2 {
+      max-width: 720px;
+      margin-bottom: 14px;
       color: #fff;
       font-size: clamp(30px, 4vw, 48px);
       line-height: 1.18;
@@ -664,39 +733,39 @@
       overflow-wrap: anywhere;
     }
 
-    .contact p {
-      max-width: 680px;
-      color: rgba(255,255,255,.82);
+    .contact-card p {
+      max-width: 720px;
+      color: rgba(255,255,255,.84);
+      font-size: 16px;
     }
 
-    .contact__links {
+    .contact-points {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      min-width: 270px;
+      margin-top: 26px;
+      max-width: 760px;
     }
 
-    .contact__links a {
-      display: block;
-      padding: 14px 20px;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: #fff;
-      text-align: center;
-      font-weight: 900;
-      overflow-wrap: anywhere;
+    .contact-point {
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.9);
+      font-size: 14px;
+      line-height: 1.45;
     }
 
-    .contact-layout {
+    .contact-side {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 28px;
-      align-items: center;
+      gap: 14px;
     }
 
     .wechat-card {
-      width: 184px;
-      padding: 14px;
-      border-radius: 22px;
+      width: 100%;
+      padding: 16px;
+      border-radius: 24px;
       background: rgba(255,255,255,.96);
       color: var(--ink);
       text-align: center;
@@ -704,19 +773,20 @@
     }
 
     .wechat-card img {
-      width: 132px;
-      height: 132px;
+      width: 148px;
+      height: 148px;
       object-fit: cover;
       display: block;
       margin: 0 auto 10px;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--line);
+      background: #fff;
     }
 
     .wechat-card strong {
       display: block;
       color: var(--primary);
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 2px;
     }
 
@@ -727,12 +797,38 @@
       line-height: 1.45;
     }
 
+    .contact__links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact__links a {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: #fff;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .contact__links a:hover {
+      transform: translateY(-2px);
+      background: #f3fbfa;
+    }
+
     .ad-section {
       padding: 0 0 54px;
       background: #fff;
     }
 
-    .content-section {
+    .ad-card {
       min-height: 120px;
       padding: 22px;
       border-radius: 28px;
@@ -756,12 +852,22 @@
       flex-wrap: wrap;
     }
 
-    .footer a { color: #fff; }
+    .footer a {
+      color: #fff;
+    }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1120px) {
+      .service-grid,
+      .process {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
       .hero__grid,
       .value-grid,
-      .company-grid {
+      .company-grid,
+      .contact-card {
         grid-template-columns: 1fr;
       }
 
@@ -769,63 +875,94 @@
         max-width: 860px;
       }
 
-      .service-grid,
-      .process {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .contact-side {
+        grid-template-columns: 220px minmax(0, 1fr);
+        align-items: stretch;
+      }
+
+      .contact__links {
+        align-content: center;
       }
     }
 
     @media (max-width: 820px) {
-      .topbar { display: none; }
+      .topbar {
+        display: none;
+      }
 
       .header__inner {
-        min-height: auto;
-        padding: 16px 0;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
+        min-height: 64px;
+        padding: 10px 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .brand {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .brand__logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 13px;
+        font-size: 19px;
+      }
+
+      .brand__text strong {
+        font-size: 19px;
+      }
+
+      .brand__text span {
+        display: none;
       }
 
       .nav {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 8px;
-        white-space: normal;
+        width: auto;
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0;
       }
 
-      .nav a,
-      .nav a:not(.nav__btn),
+      .nav a:not(.nav__btn) {
+        display: none;
+      }
+
       .nav__btn {
-        min-height: 40px;
-        padding: 9px 8px;
-        border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        line-height: 1.25;
-        background: var(--light);
-        border: 1px solid var(--line);
-      }
-
-      .nav__btn {
+        min-height: 40px;
+        padding: 8px 15px;
+        border-radius: 999px;
+        font-size: 14px;
+        line-height: 1;
+        white-space: nowrap;
         color: #fff !important;
         background: var(--primary);
-        border-color: var(--primary);
+        border: 1px solid var(--primary);
+        box-shadow: 0 8px 18px rgba(20,93,99,.16);
       }
 
       .hero__stats,
       .advantage-list,
-      .contact,
-      .contact-layout,
+      .contact-points {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-side {
+        grid-template-columns: 1fr;
+      }
+
       .wechat-card {
-        width: 100%;
-        max-width: 220px;
+        max-width: 260px;
       }
 
       .contact__links {
-        min-width: 0;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -835,37 +972,21 @@
         width: min(calc(100% - 28px), var(--max));
       }
 
-      .hero { padding-top: 54px; }
+      .hero {
+        padding-top: 52px;
+      }
 
       h1 {
-        font-size: clamp(38px, 12vw, 54px);
+        font-size: clamp(36px, 11vw, 52px);
         letter-spacing: -.045em;
       }
 
-      .nav {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .nav a,
-      .nav a:not(.nav__btn),
-      .nav__btn {
-        min-height: 38px;
-        font-size: 13px;
-      }
-
-      .nav__btn {
-        grid-column: span 2;
-      }
-
-      .hero__actions,
-      .contact__links,
-      .qr-grid {
+      .hero__actions {
         display: grid;
         grid-template-columns: 1fr;
       }
 
-      .btn,
-      .contact__links a {
+      .btn {
         width: 100%;
       }
 
@@ -874,7 +995,9 @@
         grid-template-columns: 1fr;
       }
 
-      .service-card { min-height: auto; }
+      .service-card {
+        min-height: auto;
+      }
 
       .service-point,
       .info-row {
@@ -882,7 +1005,17 @@
         gap: 8px;
       }
 
-      .brand__text span { display: none; }
+      .contact__links {
+        grid-template-columns: 1fr;
+      }
+
+      .wechat-card {
+        max-width: none;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 420px) {
@@ -890,22 +1023,35 @@
         width: min(calc(100% - 24px), var(--max));
       }
 
+      .header__inner {
+        min-height: 60px;
+      }
+
       .brand__logo {
         width: 38px;
         height: 38px;
         border-radius: 12px;
+        font-size: 18px;
       }
 
-      .brand__text strong { font-size: 18px; }
-
-      h1 { font-size: 36px; }
-
-      .nav {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .brand__text strong {
+        font-size: 18px;
       }
 
       .nav__btn {
-        grid-column: 1 / -1;
+        min-height: 38px;
+        padding: 8px 13px;
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .tag {
+        font-size: 13px;
+        border-radius: 18px;
+        align-items: flex-start;
       }
 
       .hero-card,
@@ -915,13 +1061,42 @@
       .process-step,
       .company-card,
       .info-table,
-      .contact {
+      .contact-card,
+      .ad-card {
         border-radius: 22px;
+      }
+
+      .service-card,
+      .advantage,
+      .process-step {
+        padding: 22px;
       }
     }
   </style>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3466429528731007" crossorigin="anonymous"></script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "昆山开发区网谋信息咨询服务部",
+    "alternateName": "网谋",
+    "url": "https://www.wmou.com/",
+    "email": "kefu@wangmou.com",
+    "telephone": "0512-57828333",
+    "foundingDate": "2022-08-15",
+    "description": "昆山开发区网谋信息咨询服务部，专注企业网站建设、SEO优化、SEM推广、GEO生成式搜索优化及互联网营销咨询服务。",
+    "areaServed": "中国",
+    "serviceType": [
+      "网站建设",
+      "SEO优化",
+      "SEM推广",
+      "GEO生成式搜索优化",
+      "互联网营销咨询"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -961,10 +1136,12 @@
       <div class="container hero__grid">
         <div>
           <div class="tag">www.wmou.com · 网谋企业官网</div>
+
           <h1>让企业网站成为<span class="hero__highlight">持续获客</span>的线上阵地</h1>
+
           <p class="hero__lead">
             网谋面向企业提供从官网规划到搜索增长的系统化支持。
-            我们从品牌表达、内容结构、流量获取和咨询转化出发，帮助企业建立更清晰、更实用的互联网增长基础。
+            从品牌表达、内容结构、流量获取和咨询转化出发，帮助企业建立更清晰、更实用的互联网增长基础。
           </p>
 
           <div class="hero__actions">
@@ -979,16 +1156,16 @@
             </div>
             <div class="stat">
               <strong>搜索优化</strong>
-              <span>SEO / GEO内容可见度</span>
+              <span>SEO / GEO 内容可见度</span>
             </div>
             <div class="stat">
               <strong>广告推广</strong>
-              <span>SEM投放与转化支持</span>
+              <span>SEM 投放与转化支持</span>
             </div>
           </div>
         </div>
 
-        <aside class="hero-card">
+        <aside class="hero-card" aria-label="网谋服务重点">
           <div class="hero-card__head">
             <span>Digital Growth Services</span>
             <h2>把网站、搜索与推广连接起来</h2>
@@ -1002,13 +1179,15 @@
                 <p>让客户快速理解企业业务、服务内容和合作价值。</p>
               </div>
             </div>
+
             <div class="service-point">
               <i>2</i>
               <div>
                 <h3>可持续的内容体系</h3>
-                <p>围绕搜索需求和AI搜索环境，持续完善专业内容。</p>
+                <p>围绕搜索需求和 AI 搜索环境，持续完善专业内容。</p>
               </div>
             </div>
+
             <div class="service-point">
               <i>3</i>
               <div>
@@ -1027,7 +1206,7 @@
           <div class="kicker">Services</div>
           <h2>网谋服务体系</h2>
           <p>
-            围绕企业线上展示、流量获取和客户咨询，网谋将建站、内容、推广与AI搜索适配整合为可持续优化的服务体系。
+            围绕企业线上展示、流量获取和客户咨询，网谋将建站、内容、推广与 AI 搜索适配整合为可持续优化的服务体系。
           </p>
         </div>
 
@@ -1063,7 +1242,7 @@
             <div class="service-card__icon">GEO</div>
             <h3>GEO优化</h3>
             <p>
-              面向生成式搜索与AI问答场景，优化品牌信息、内容结构和专业表达，
+              面向生成式搜索与 AI 问答场景，优化品牌信息、内容结构和专业表达，
               提升企业被理解和被推荐的可能性。
             </p>
           </article>
@@ -1078,7 +1257,7 @@
           <h2>一个企业官网，应该服务于真实业务</h2>
           <p>
             网谋不追求复杂堆砌，而是帮助企业把业务说明白、把页面做清楚、把搜索基础搭起来。
-            网站建成后，能够继续承接内容更新、广告投放和搜索优化，而不是一次性展示页面。
+            网站建成后，能够继续承接内容更新、广告投放和搜索优化，而不是停留在一次性展示页面。
           </p>
         </div>
 
@@ -1087,14 +1266,17 @@
             <h3>定位清楚</h3>
             <p>先梳理企业服务、客户群体和核心优势，再规划页面内容。</p>
           </div>
+
           <div class="advantage">
             <h3>表达专业</h3>
             <p>减少空泛口号，用真实、清晰、可信的内容提升品牌形象。</p>
           </div>
+
           <div class="advantage">
             <h3>适合推广</h3>
             <p>兼顾搜索收录、广告落地页和客户咨询路径，避免网站难以转化。</p>
           </div>
+
           <div class="advantage">
             <h3>便于维护</h3>
             <p>保留后续更新空间，让企业网站可以随着业务持续完善。</p>
@@ -1120,16 +1302,19 @@
             <h3>需求梳理</h3>
             <p>了解企业业务、目标客户、现有网站情况和推广目标。</p>
           </div>
+
           <div class="process-step">
             <span>02</span>
             <h3>结构规划</h3>
             <p>确定栏目层级、核心页面、内容方向和基础搜索策略。</p>
           </div>
+
           <div class="process-step">
             <span>03</span>
             <h3>页面建设</h3>
             <p>完成设计、开发、文案整理和多终端自适应适配。</p>
           </div>
+
           <div class="process-step">
             <span>04</span>
             <h3>上线优化</h3>
@@ -1156,14 +1341,17 @@
             <span>企业名称</span>
             <strong>昆山开发区网谋信息咨询服务部</strong>
           </div>
+
           <div class="info-row">
             <span>统一社会信用代码</span>
             <strong><em>92320583MABUAGQD4X</em></strong>
           </div>
+
           <div class="info-row">
             <span>成立日期</span>
             <strong>2022-08-15</strong>
           </div>
+
           <div class="info-row">
             <span>经营范围</span>
             <strong>
@@ -1176,36 +1364,43 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="contact-section">
       <div class="container">
-        <div class="contact">
-          <div class="contact-layout">
-            <div>
-              <h2>需要建设网站，或提升搜索获客效果？</h2>
-              <p>
-                可联系网谋，沟通企业官网、搜索增长、广告推广及AI搜索适配等相关需求。
-              </p>
+        <div class="contact-card">
+          <div>
+            <h2>需要建设网站，或提升搜索获客效果？</h2>
+            <p>
+              可联系网谋，沟通企业官网、搜索增长、广告推广及 AI 搜索适配等相关需求。
+              我们会结合企业业务、网站现状和推广目标，提供更适合执行的建议。
+            </p>
+
+            <div class="contact-points">
+              <div class="contact-point">企业官网建设</div>
+              <div class="contact-point">SEO / GEO 优化</div>
+              <div class="contact-point">SEM 推广咨询</div>
             </div>
+          </div>
+
+          <div class="contact-side">
             <div class="wechat-card">
-              <img src="https://www.wangxiansheng.com/static/images/wechat.png" alt="网谋客服微信二维码">
+              <img src="https://www.wangxiansheng.com/static/images/wechat.png" alt="网谋客服微信二维码" loading="lazy">
               <strong>客服微信</strong>
               <span>扫码添加，便于沟通需求</span>
             </div>
-          </div>
-          <div class="contact__links">
-            <a href="tel:051257828333">0512-57828333</a>
-            <a href="mailto:kefu@wangmou.com">kefu@wangmou.com</a>
+
+            <div class="contact__links">
+              <a href="tel:051257828333">0512-57828333</a>
+              <a href="mailto:kefu@wangmou.com">kefu@wangmou.com</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-
   <section class="ad-section" aria-label="广告展示位">
     <div class="container">
-      <section class="content-section" aria-labelledby="section-ads">
-        <!-- 自适应 -->
+      <div class="ad-card">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-3466429528731007"
@@ -1213,9 +1408,9 @@
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+          (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-      </section>
+      </div>
     </div>
   </section>
 
